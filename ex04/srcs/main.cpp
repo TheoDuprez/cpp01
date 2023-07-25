@@ -5,26 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 07:30:05 by tduprez           #+#    #+#             */
-/*   Updated: 2023/07/19 10:08:45 by tduprez          ###   ########lyon.fr   */
+/*   Created: 2023/07/19 14:35:56 by tduprez           #+#    #+#             */
+/*   Updated: 2023/07/25 11:01:38 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../includes/ftSed.hpp"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	Zombie	*zombie = zombieHorde(10, "tduprez");
+	std::stringstream	buf;
+	std::ifstream		infile;
+	std::ofstream		outfile;
 
-	delete[] zombie;
+	if (ac != 4)
+		return (std::cout << "Error, too few or too many arguments (need 3 arguments)" << std::endl, 1);
+	else if (!std::ifstream(av[1]).good())
+		return (std::cout << "Error ! The file '" << av[1] << "' does not exist !" << std::endl, 1);
+	infile = getInfile(av[1]);
+	outfile = getOutfile(av[1], infile);
+	buf << infile.rdbuf();
+	outfile << sedString(std::string(buf.str()), std::string(av[2]), std::string(av[3]));
 	return (0);
 }
-
-// int	main(void)
-// {
-// 	Zombie	*zombie = zombieHorde(10, "tduprez");
-
-// 	std::cout << "Addr of zombie is : " << zombie << std::endl;
-// 	delete[] zombie;
-// 	return (0);
-// }

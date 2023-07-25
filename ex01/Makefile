@@ -1,11 +1,10 @@
 # VARIABLE DECLARATION ############################################################################
 
-NAME =			philo
+NAME =			moreBrainz
 
-CC =			gcc
+CC =			g++
 
-CFLAGS =		-Wall -Werror -Wextra -O3 -pthread
-# CFLAGS =		-fsanitize=thread -D TSAN_OPTIONS=second_deadlock_stack=1
+CFLAGS =		-Wall -Werror -Wextra -std=c++98
 
 HEADERS =		./includes
 
@@ -18,27 +17,21 @@ PURPLE	= 		\033[0;35m
 CYAN	= 		\033[0;96m
 WHITE	= 		\033[0;37m
 
-SRCS =			./srcs/ft_atoi.c \
-				./srcs/struct_init.c \
-				./srcs/main.c \
-				./srcs/parsing.c \
-				./srcs/philo_actions.c \
-				./srcs/time_management.c \
-				./srcs/mutex_management.c \
-				./srcs/free.c \
-				./srcs/simulation.c \
+SRCS =			./srcs/main.cpp \
+				./srcs/zombieHorde.cpp \
+				./srcs/Zombie.cpp
 
-OBJS =			$(SRCS:.c=.o)
+OBJS =			$(SRCS:.cpp=.o)
 
 # RULES ###########################################################################################
 
 all: $(NAME)
 $(NAME): $(OBJS)
-	echo "$(CYAN)Compiling Philosophers :$(WHITE)"
+	echo "$(CYAN)Compiling moreBrainz :$(WHITE)"
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	echo "$(GREEN)Philosophers successfully compiled ! \n\n$(WHITE)"
+	echo "$(GREEN)moreBrainz successfully compiled !$(WHITE)"
 
-./srcs/%.o: ./srcs/%.c $(HEADERS)/philo.h
+./srcs/%.o: ./srcs/%.cpp $(HEADERS)/Zombie.hpp
 	$(CC) $(CFLAGS) -I$(HEADERS) -c $< -o $@
 
 clean:

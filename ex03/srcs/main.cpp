@@ -5,26 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 07:30:05 by tduprez           #+#    #+#             */
-/*   Updated: 2023/07/19 08:58:10 by tduprez          ###   ########lyon.fr   */
+/*   Created: 2023/07/19 10:55:45 by tduprez           #+#    #+#             */
+/*   Updated: 2023/07/25 10:56:12 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../includes/HumanA.hpp"
+#include "../includes/HumanB.hpp"
 
-int	main(void)
+
+int main()
 {
-	Zombie*	zombieHeap = newZombie("HeapZombie");
-	Zombie	zombieStack("StackZombie");
-
-	if (!zombieHeap)
 	{
-		std::cout << "Failed allocated memory with zombieHeap" << std::endl;
-		return (1);
+		Weapon club = Weapon("crude spiked club");
+
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
 	}
-	zombieHeap->announce();
-	delete zombieHeap;
-	zombieStack.announce();
-	randomChump("randomZombieInStack");
-	return (0);
+	{
+		Weapon club = Weapon("crude spiked club");
+
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
+	return 0;
 }

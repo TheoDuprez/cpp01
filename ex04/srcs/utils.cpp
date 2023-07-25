@@ -6,11 +6,11 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:35:10 by tduprez           #+#    #+#             */
-/*   Updated: 2023/07/23 20:56:57 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/07/25 11:01:43 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.hpp"
+#include "../includes/ftSed.hpp"
 
 std::ifstream	getInfile(const char *file)
 {

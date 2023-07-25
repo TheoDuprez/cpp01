@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 10:40:04 by tduprez           #+#    #+#             */
-/*   Updated: 2023/07/19 14:14:14 by tduprez          ###   ########lyon.fr   */
+/*   Created: 2023/07/19 07:33:05 by tduprez           #+#    #+#             */
+/*   Updated: 2023/07/25 10:47:19 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/Zombie.hpp"
 
-#pragma once
-
-#include "Weapon.hpp"
-
-class	HumanA
+Zombie::Zombie(void)
 {
+	return ;
+}
 
-private:
-	std::string	_name;
-	Weapon&		_weapon;
+Zombie::~Zombie()
+{
+	std::cout << this->_name << " was destroyed !" << std::endl;
+	return ;
+}
 
-public:
-	HumanA(std::string name, Weapon& type);
-	~HumanA(void);
-	void	attack(void) const;
-};
+void	Zombie::announce(void) const
+{
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	return ;
+}
+
+void	Zombie::setZombie(std::string name)
+{
+	this->_name = name;
+	return ;
+}
