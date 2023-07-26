@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 07:30:14 by tduprez           #+#    #+#             */
-/*   Updated: 2023/07/19 10:01:41 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/07/26 11:34:07 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #pragma once
 
 #include <iostream>
-
+#include <cstdlib>
 
 class Zombie
 {
@@ -29,4 +29,4 @@ public:
 	void	setZombie(const std::string name);
 };
 
-Zombie* zombieHorde(int n, std::string name);
+Zombie* zombieHorde(int N, std::string name);

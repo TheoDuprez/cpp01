@@ -6,31 +6,31 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 10:55:45 by tduprez           #+#    #+#             */
-/*   Updated: 2023/07/25 10:56:12 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/07/26 12:08:50 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/HumanA.hpp"
 #include "../includes/HumanB.hpp"
 
-
 int main()
 {
 	{
-		Weapon club = Weapon("crude spiked club");
+		Weapon t_weapon = Weapon("AK47");
 
-		HumanA bob("Bob", club);
+		HumanA bob("Bob", t_weapon);
 		bob.attack();
-		club.setType("some other type of club");
+		t_weapon.setType("Desert Eagle");
 		bob.attack();
 	}
 	{
-		Weapon club = Weapon("crude spiked club");
+		Weapon ct_weapon = Weapon("M4A4");
 
 		HumanB jim("Jim");
-		jim.setWeapon(club);
 		jim.attack();
-		club.setType("some other type of club");
+		jim.setWeapon(ct_weapon);
+		jim.attack();
+		ct_weapon.setType("M4A1s");
 		jim.attack();
 	}
 	return 0;

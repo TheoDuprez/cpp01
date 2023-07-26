@@ -6,17 +6,17 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:35:10 by tduprez           #+#    #+#             */
-/*   Updated: 2023/07/25 11:01:43 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/07/26 13:25:46 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ftSed.hpp"
 
-std::ifstream	getInfile(const char *file)
+std::ifstream*	getInfile(const char *file)
 {
-	std::ifstream		infile(file);
-	
-	if (!infile)
+	std::ifstream*		infile = new std::ifstream(file);
+
+	if (infile->fail())
 	{
 		std::cout << "Error when opening input file" << std::endl;
 		std::exit(1);
@@ -24,13 +24,14 @@ std::ifstream	getInfile(const char *file)
 	return (infile);
 }
 
-std::ofstream	getOutfile(const char *file, std::ifstream& infile)
+std::ofstream*	getOutfile(const char *outfileName, std::ifstream* infile)
 {
-	std::ofstream		outfile(std::string(file) + ".replace");
-	
-	if (!outfile)
+	std::ofstream*	outfile = new std::ofstream(outfileName, std::ofstream::out);
+
+	if (outfile->fail())
 	{
-		infile.close();
+		infile->close();
+		delete infile;
 		std::cout << "Error when opening output file" << std::endl;
 		std::exit(1);
 	}
@@ -46,8 +47,10 @@ const std::string	sedString(std::string str, std::string search, std::string rep
 	if (search.empty() == true)
 	{
 		std::cout << "The string searched can't be empty !" << std::endl;
-		exit(1);
+		std::exit(1);
 	}
+	if (search == replace)
+		return (str);
 	indexOccur = str.find(search);
 	while (indexOccur != std::string::npos)
 	{
